@@ -19,7 +19,7 @@ spring:
             - id: reservas-service
               uri: http://localhost:8083
               predicates:
-                - Path=/reservas,/reservas/**
+                - Path=/reservas,/reservas/**,/fotografos,/fotografos/**,/tipos-sesion,/tipos-sesion/**
 
             - id: pagos-service
               uri: http://localhost:8084
