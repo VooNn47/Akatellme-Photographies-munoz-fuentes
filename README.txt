@@ -2,7 +2,7 @@
 
 ## Información del proyecto
 
-AKATELLME PHOTOGRAPHIES es un sistema que ayuda a un fotógrafo urbano a organizar su trabajo. Este fotógrafo tiene más de 4 años de experiencia en la música y los videos.
+AKATELLME PHOTOGRAPHIES es un sistema que ayuda a un fotógrafo profesional a organizar y administrar su trabajo de manera más rápida, moderna y eficiente. El cliente cuenta con más de 4 años de experiencia en el área musical, audiovisual y cobertura de eventos.
 
 El trabajo de Akatellme se centra en:
 
