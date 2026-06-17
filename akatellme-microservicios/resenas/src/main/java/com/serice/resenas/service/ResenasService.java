@@ -24,6 +24,21 @@ public class ResenasService
     public Modelo buscarPorId(Long id) {
         return repository.findById(id).orElse(null);
     }
+    public Modelo actualizar(Long id, Modelo nuevo) {
+    Modelo existente = repository.findById(id).orElse(null);
+
+    if (existente == null) {
+        return null;
+    }
+
+    existente.setClasificacion(nuevo.getClasificacion());
+    existente.setClienteid(nuevo.getClienteid());
+    existente.setComentario(nuevo.getComentario());
+    existente.setEventoid(nuevo.getEventoid());
+    existente.setFecha(nuevo.getFecha());
+
+    return repository.save(existente);
+}
 
     public void eliminar(Long id) {
         repository.deleteById(id);
