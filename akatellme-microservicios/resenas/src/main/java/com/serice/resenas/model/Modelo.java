@@ -1,8 +1,8 @@
 package com.serice.resenas.model;
+
 import java.time.LocalDate;
 
-
-
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,24 +17,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Modelo 
-{
+@Schema(description = "Entidad que representa una reseña realizada por un cliente a un evento")
+public class Modelo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "ID único de la reseña", example = "1")
     private Long id;
+
     @NotNull(message = "El ID del cliente es obligatorio")
+    @Schema(description = "ID del cliente que realiza la reseña", example = "2")
     private Long clienteid;
-    @NotNull(message = "el Id del evento es obligatorio")
+
+    @NotNull(message = "El ID del evento es obligatorio")
+    @Schema(description = "ID del evento reseñado", example = "3")
     private Long eventoid;
 
-    @NotBlank(message = "el comentario es obligatorio")
+    @NotBlank(message = "El comentario es obligatorio")
+    @Schema(description = "Comentario escrito por el cliente", example = "Muy buen evento, excelente organización")
     private String comentario;
 
-    @NotNull(message = "la clasificacion debe ser obligatoria")
+    @NotNull(message = "La clasificación debe ser obligatoria")
+    @Schema(description = "Clasificación o nota entregada al evento", example = "5")
     private Integer clasificacion;
+
+    @Schema(description = "Fecha en que se realizó la reseña", example = "2026-06-16")
     private LocalDate fecha;
-
-
-
-
 }

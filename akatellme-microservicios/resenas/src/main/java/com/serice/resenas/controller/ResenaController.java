@@ -13,6 +13,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/resenas")
+@CrossOrigin(origins = "*") 
 public class ResenaController {
 
     @Autowired
