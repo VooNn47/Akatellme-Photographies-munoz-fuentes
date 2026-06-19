@@ -18,10 +18,12 @@ import com.akatellme.service.repository.TipoSesionRepository;
 
 import jakarta.validation.Valid;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/sesion")
+@CrossOrigin(origins = "*") 
 public class TiposesionController 
 {
     @Autowired
