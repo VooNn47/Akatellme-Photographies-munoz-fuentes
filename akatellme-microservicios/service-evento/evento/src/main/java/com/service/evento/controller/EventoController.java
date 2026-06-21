@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import com.service.evento.model.Eventoi;
 import com.service.evento.service.EventoService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 @RestController
@@ -23,6 +24,7 @@ public class EventoController
     private EventoService eventoService;
 
     @GetMapping
+    @Operation(summary = "Obtener todas las notificaciones")
     public ResponseEntity<List<Eventoi>> listar()
     {
         List<Eventoi> eventos = eventoService.listarTodo();
@@ -31,6 +33,7 @@ public class EventoController
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Obtener un evento especifico")
     public ResponseEntity<Eventoi> buscar(@PathVariable Long id)
     {
         Eventoi evento = eventoService.obtenerEventoCompleto(id);
@@ -64,6 +67,7 @@ public class EventoController
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Actualizar un evento")
     public ResponseEntity<?> actualizarEvento(
             @PathVariable Long id,
             @Valid @RequestBody Eventoi evento)
@@ -91,6 +95,7 @@ public class EventoController
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar un evento especifico")
     public ResponseEntity<?> eliminar(@PathVariable Long id)
     {
         try {
