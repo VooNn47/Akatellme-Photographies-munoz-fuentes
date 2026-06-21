@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/reservas")
+@RequestMapping("/api/v1/reservas")
+
 @Tag(name = "Reservas", description = "Operaciones relacionadas con la gestion de reservas")
 
 public class ReservaController 
