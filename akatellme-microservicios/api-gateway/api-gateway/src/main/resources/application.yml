@@ -76,6 +76,15 @@ spring:
           uri: http://localhost:8089
           predicates:
             - Path=/api/v1/contacto/v3/api-docs
+        - id: disponibilidad-service
+          uri: http://localhost:8090
+          predicates:
+            - Path=/disponibilidades,/disponibilidades/**
+
+        - id: disponibilidad-docs
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/v1/disponibilidad/v3/api-docs
 
 springdoc:
   swagger-ui:
@@ -91,3 +100,5 @@ springdoc:
         url: /api/v1/contacto/v3/api-docs
       - name: Servicio Reseñas
         url: /api/v1/resenas/v3/api-docs
+      - name: Servicio Disponibilidad
+        url: /api/v1/disponibilidad/v3/api-docs
