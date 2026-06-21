@@ -29,7 +29,7 @@ public class PagoController {
     }
 
 
-    @Operation(summary = "buscar un pago por id")
+    @Operation(summary = "buscar un pago por su id")
     @GetMapping("/{id}")
     public ResponseEntity<Pago> obtener(@PathVariable Long id){
         return pagoService.buscarPorId(id)
