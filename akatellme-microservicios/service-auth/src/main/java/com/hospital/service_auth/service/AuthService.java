@@ -46,8 +46,8 @@ public class AuthService {
         nuevoUsuario.setContrasena(passwordEncoder.encode(request.getContrasena()));
 
         if (request.getRoles() == null || request.getRoles().isEmpty()) {
-            Rol rolPorDefecto = rolRepository.findByNombreRol("PACIENTE")
-                    .orElseThrow(() -> new RuntimeException("Error: El rol PACIENTE no existe en la DB."));
+            Rol rolPorDefecto = rolRepository.findByNombreRol("USUARIO")
+                    .orElseThrow(() -> new RuntimeException("Error: El rol USUARIO no existe en la DB."));
             nuevoUsuario.getRoles().add(rolPorDefecto);
         } else {
             for (String nombreRol : request.getRoles()) {
@@ -94,3 +94,4 @@ public class AuthService {
                 .compact();
     }
 }
+
