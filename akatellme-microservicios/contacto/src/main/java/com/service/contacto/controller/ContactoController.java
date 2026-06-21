@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.service.contacto.model.ContactoModelo;
 import com.service.contacto.service.ContactoService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/contacto")
@@ -27,6 +28,7 @@ public class ContactoController
     private ContactoService contactoService;
 
     @GetMapping
+    @Operation(summary = "Obtener todos los contactos")
     public List<ContactoModelo> listar() {
         return contactoService.listar();
     }
@@ -37,6 +39,7 @@ public class ContactoController
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "contacto por id")
     public ResponseEntity< ContactoModelo> buscar(@PathVariable Long id) {
         ContactoModelo contactoModelo = contactoService.buscarPorId(id);
 
@@ -47,6 +50,7 @@ public class ContactoController
         return ResponseEntity.ok(contactoModelo);
     }
     @PutMapping("/{id}")
+    @Operation(summary = "actualizar contacto por id")
     public ResponseEntity<ContactoModelo> actualizar(
             @PathVariable Long id,
             @Valid @RequestBody ContactoModelo contactoModelo) {
@@ -61,6 +65,7 @@ public class ContactoController
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "eliminar contacto por id")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         contactoService.eliminar(id);
         return ResponseEntity.noContent().build();
