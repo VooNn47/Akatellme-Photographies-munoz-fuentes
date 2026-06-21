@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.serice.resenas.model.Modelo;
 import com.serice.resenas.service.ResenasService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 @RestController
@@ -20,6 +21,7 @@ public class ResenaController {
     private ResenasService service;
 
     @GetMapping
+    @Operation(summary = "Obtener todas las reseñas")
     public List<Modelo> listar() {
         return service.listar();
     }
@@ -30,6 +32,7 @@ public class ResenaController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Obtener reseñas por ID")
     public ResponseEntity<Modelo> buscar(@PathVariable Long id) {
         Modelo resena = service.buscarPorId(id);
 
@@ -39,8 +42,24 @@ public class ResenaController {
 
         return ResponseEntity.ok(resena);
     }
+    @PutMapping("/{id}")
+    @Operation(summary = "Actualizar una reseña por ID")
+    public ResponseEntity<Modelo> actualizar(@PathVariable Long id,
+                                            @Valid @RequestBody Modelo resena) {
+
+        Modelo resenaExistente = service.buscarPorId(id);
+
+        if (resenaExistente == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        resena.setId(id);
+
+        return ResponseEntity.ok(service.guardar(resena));
+    }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar reseñas por ID")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);
         return ResponseEntity.noContent().build();
