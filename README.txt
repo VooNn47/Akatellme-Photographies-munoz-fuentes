@@ -2,138 +2,168 @@
 
 ## Información del proyecto
 
-AKATELLME PHOTOGRAPHIES es un sistema que ayuda a un fotógrafo profesional a organizar y administrar su trabajo de manera más rápida, moderna y eficiente. El cliente cuenta con más de 4 años de experiencia en el área musical, audiovisual y cobertura de eventos.
+AKATELLME PHOTOGRAPHIES es un sistema desarrollado para apoyar la gestión de un fotógrafo profesional, permitiendo organizar reservas, eventos, usuarios y otros servicios de forma más rápida y eficiente.
 
-El trabajo de Akatellme se centra en:
+El proyecto está orientado a la administración de:
 
-- Fotos de la ciudad
-
-- Videos musicales
-
-- Detrás de escena
-
-- Cubrir conciertos y eventos
+* Fotografía urbana.
+* Videos musicales.
+* Detrás de escena.
+* Cobertura de conciertos y eventos.
 
 Ha trabajado con artistas como:
 
-- Jairo Vera
-
-- Lleflight
-
-- Gino Mella
-
-- Cris MJ
-
-- Jere Klein
+* Jairo Vera
+* Lleflight
+* Gino Mella
+* Cris MJ
+* Jere Klein
 
 ---
 
 ## Integrantes
 
-- Ian Muñoz
-
-- Mathias Fuentes
-
----
-
-## Partes del sistema
-
-- Servicio de usuarios
-
-- Servicio de eventos
-
-- Servicio de notificaciones
-
-- Servicio de pagos
-
-- Servicio de reservas
-
-- Puerta de acceso a la API
+* Ian Muñoz
+* Mathias Fuentes
 
 ---
 
-## Funciones del sistema
+## Arquitectura del sistema
 
-- Administrar usuarios
+El proyecto está basado en una arquitectura de microservicios, donde cada servicio posee su propia base de datos y funciona de manera independiente.
 
-- Administrar eventos
+### Microservicios implementados
 
-- Administrar reservas
-
-- Administrar pagos
-
-- Sistema de notificaciones
-
-- Comunicación entre partes del sistema
-
-- Puerta de acceso a la API centralizada
-
-- Validaciones de datos
-
-- Acciones completas en cada parte del sistema
+* Servicio de usuarios.
+* Servicio de reservas.
+* Servicio de pagos.
+* Servicio de eventos.
+* Servicio de notificaciones.
+* Servicio de contacto.
+* Servicio de reseñas.
+* Servicio de disponibilidad.
+* Servicio de autenticación.
+* Servicio de fotografías.
+* API Gateway.
 
 ---
 
-## Herramientas utilizadas
+## Funcionalidades del sistema
 
-- Java 21
+* Gestión de usuarios.
+* Gestión de reservas.
+* Gestión de eventos.
+* Gestión de pagos.
+* Gestión de reseñas.
+* Gestión de solicitudes de contacto.
+* Administración de disponibilidades.
+* Sistema de autenticación mediante JWT.
+* Sistema de notificaciones.
+* Comunicación entre microservicios mediante WebClient.
+* Documentación automática con Swagger.
+* Validación de datos.
+* Operaciones CRUD completas en cada servicio.
 
-- Spring Boot
+---
 
-- Spring Data JPA
+## Tecnologías utilizadas
 
-- MySQL
-
-- Maven
-
-- WebClient
-
-- API Gateway
-
-- Postman
+* Java 21
+* Spring Boot
+* Spring Data JPA
+* Spring Security
+* JWT
+* Spring Cloud Gateway
+* WebClient
+* Swagger OpenAPI
+* MySQL
+* Maven
+* Postman
+* Git
+* GitHub
 
 ---
 
 ## Estructura del proyecto
 
-El proyecto se desarrolló con una estructura de partes independientes, donde cada parte tiene:
+Cada microservicio cuenta con:
 
-- Base de datos propia
+* Base de datos propia.
+* Controller.
+* Service.
+* Repository.
+* Entity.
+* Configuraciones independientes.
+* Documentación Swagger.
 
-- Controladores de acceso
-
-- Servicios
-
-- Almacenamiento de datos
-
-- Elementos propios
-
-La comunicación entre partes del sistema se hace mediante WebClient.
+La comunicación entre servicios se realiza mediante WebClient y todas las solicitudes externas pasan por el API Gateway.
 
 ---
 
-## Pasos para iniciar el proyecto
+## Documentación de API
+
+La documentación de los servicios se encuentra disponible mediante Swagger:
+
+```http
+http://localhost:8080/swagger-ui.html
+```
+
+---
+
+## Puertos utilizados
+
+| Servicio       | Puerto |
+| -------------- | ------ |
+| API Gateway    | 8080   |
+| Usuarios       | 8082   |
+| Reservas       | 8083   |
+| Pagos          | 8084   |
+| Eventos        | 8085   |
+| Notificaciones | 8086   |
+| Reseñas        | 8088   |
+| Contacto       | 8089   |
+| Disponibilidad | 8090   |
+
+---
+
+## Pasos para ejecutar el proyecto
 
 1. Iniciar XAMPP y activar Apache y MySQL.
 
-2. Crear las bases de datos para cada parte del sistema.
+2. Crear las bases de datos correspondientes a cada microservicio.
 
-3. Iniciar cada parte del sistema:
+3. Ejecutar todos los microservicios.
 
-- Servicio de usuarios
+4. Ejecutar el API Gateway.
 
-- Servicio de eventos
-
-- Servicio de notificaciones
-
-- Servicio de pagos
-
-- Servicio de reservas
-
-- Puerta de acceso a la API
-
-4. Utilizar Postman a través de la puerta de acceso:
+5. Acceder a Swagger:
 
 ```http
+http://localhost:8080/swagger-ui.html
+```
 
-http://localhost:8080
+6. Realizar pruebas mediante Swagger o Postman.
+
+---
+
+## Comunicación entre microservicios
+
+La comunicación entre servicios se implementa mediante WebClient.
+
+Ejemplos:
+
+* Reserva → Usuario.
+* Reserva → Fotografía.
+* Evento → Notificación.
+
+---
+
+## Control de versiones
+
+Para el desarrollo del proyecto se utilizó Git y GitHub, trabajando mediante ramas para facilitar el trabajo colaborativo y el control de cambios.
+
+---
+
+## Autor
+
+Proyecto desarrollado por estudiantes de Ingeniería en Informática como parte del proceso de aprendizaje de arquitectura de microservicios con Spring Boot.
