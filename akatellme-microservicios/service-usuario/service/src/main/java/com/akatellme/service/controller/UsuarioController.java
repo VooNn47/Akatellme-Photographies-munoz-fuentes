@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.akatellme.service.model.Usuario;
 import com.akatellme.service.service.UsuarioService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,6 +32,7 @@ public class UsuarioController
     private UsuarioService usuarioService;
 
     @GetMapping
+    @Operation(summary = "Obtener todos los usuarios")
     public ResponseEntity<List<Usuario>> listar()
     {
         List<Usuario> usuarios = usuarioService.listartodo();
@@ -38,6 +40,7 @@ public class UsuarioController
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Obtener usuario especifico por id")
     public ResponseEntity<Usuario> obtener(@PathVariable Long id)
     {
         return usuarioService.BuscarporID(id)
@@ -65,6 +68,7 @@ public class UsuarioController
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Actualizar usuario por ID")
     public ResponseEntity<?> actualizar(
             @PathVariable Long id,
             @Valid @RequestBody Usuario usuario)
@@ -87,6 +91,7 @@ public class UsuarioController
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar usuario por ID")
     public ResponseEntity<?> eliminar(@PathVariable Long id)
     {
         try {
